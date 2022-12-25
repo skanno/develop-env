@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+    php-fpm:
+        container_name: php-fpm
+        build: ./php-fpm/
+        volumes:
+            - ./php/www:/var/www
+    nginx:
+        container_name: nginx
+        build: ./nginx/
+        ports:
+          - "80:80"
+
