@@ -5,10 +5,12 @@ services:
         container_name: php-fpm
         build: ./php-fpm/
         volumes:
-            - ./php/www:/var/www
+            - ./www:/var/www
     nginx:
         container_name: nginx
         build: ./nginx/
+        volumes:
+            - ./php/www:/usr/share/nginx/html
         ports:
           - "80:80"
         depends_on:
