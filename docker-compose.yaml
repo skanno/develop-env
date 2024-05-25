@@ -10,7 +10,7 @@ services:
         container_name: nginx
         build: ./nginx/
         volumes:
-            - ./php/www:/usr/share/nginx/html
+            - ./www:/usr/share/nginx/html
         ports:
           - "80:80"
         depends_on:
