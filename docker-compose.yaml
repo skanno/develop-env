@@ -17,6 +17,7 @@ services:
             - 3306:3306
         stdin_open: true
         tty: true
+        restart: always
 
     php-fpm:
         container_name: php-fpm
@@ -25,6 +26,7 @@ services:
             - ./www:/var/www
         stdin_open: true
         tty: true
+        restart: always
 
     nginx:
         container_name: nginx
@@ -37,6 +39,7 @@ services:
             - "php-fpm"
         stdin_open: true
         tty: true
+        restart: always
 
     node:
         container_name: node
@@ -45,4 +48,5 @@ services:
             - ./node/src:/root
         stdin_open: true
         tty: true
+        restart: always
 
