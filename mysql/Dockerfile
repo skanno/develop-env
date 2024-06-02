@@ -1,6 +1,6 @@
 FROM mysql:8.0.37-debian
 
-RUN apt update
+RUN apt-get update
 RUN apt-get install -y locales
 RUN locale-gen ja-JP.UTF-8
 RUN localedef -f UTF-8 -i ja_JP ja_JP

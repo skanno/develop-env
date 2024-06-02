@@ -7,17 +7,17 @@ COPY .bash_aliases /root
 COPY .gitconfig /root
 COPY .vimrc /root
 
-RUN apt update
-RUN apt install -y git 
-RUN apt install -y libonig-dev
-RUN apt install -y libpq-dev
-RUN apt install -y libzip-dev 
-RUN apt install -y mariadb-client 
-RUN apt install -y unzip 
-RUN apt install -y vim 
-RUN apt install -y wget 
-RUN apt install -y zip
-RUN apt install -y zlib1g-dev 
+RUN apt-get update
+RUN apt-get install -y git 
+RUN apt-get install -y libonig-dev
+RUN apt-get install -y libpq-dev
+RUN apt-get install -y libzip-dev 
+RUN apt-get install -y mariadb-client 
+RUN apt-get install -y unzip 
+RUN apt-get install -y vim 
+RUN apt-get install -y wget 
+RUN apt-get install -y zip
+RUN apt-get install -y zlib1g-dev 
 
 RUN apt-get install -y locales
 RUN locale-gen ja-JP.UTF-8
@@ -39,6 +39,7 @@ COPY --from=composer/composer /usr/bin/composer /usr/bin/composer
 
 # Install Composer
 RUN composer self-update
+RUN composer global require squizlabs/php_codesniffer
 
 WORKDIR /var/www
 
