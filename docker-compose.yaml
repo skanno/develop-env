@@ -13,6 +13,7 @@ services:
         volumes:
             - ./mysql/data:/var/lib/mysql
             - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+            - ./mysql/work:/root
         ports:
             - 3306:3306
         stdin_open: true
@@ -49,4 +50,30 @@ services:
         stdin_open: true
         tty: true
         restart: always
+
+    samba:
+        container_name: samba
+        build: ./samba/
+        environment:
+            USER: "samba"
+            PASS: "secret"
+        ports:
+            - 445:445
+        volumes:
+            - ./samba/storage:/storage
+        stdin_open: true
+        tty: true
+        restart: always
+
+    redis:
+        container_name: redis
+        build: ./redis/
+        ports:
+            - 6379:6379
+        volumes:
+            - "./redis/data:/data"
+        stdin_open: true
+        tty: true
+        restart: always
+
 
